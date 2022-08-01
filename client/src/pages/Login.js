@@ -15,7 +15,7 @@ function Login() {
       setLoading(true);
       const response = await axios.post("/api/users/login", values);
       localStorage.setItem(
-        "cedar-school",
+        "swed-money",
         JSON.stringify({ ...response.data, password: "" })
       );
       setLoading(false);
@@ -28,7 +28,7 @@ function Login() {
   };
 
   useEffect(() => {
-    if (localStorage.getItem("cedar-school")) {
+    if (localStorage.getItem("swed-money")) {
       navigate("/");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -41,7 +41,6 @@ function Login() {
         <div className="col-md-4">
           <Form layout="vertical" onFinish={onFinish}>
             <h1>Login</h1>
-    
 
             <Form.Item label="Email" name="email">
               <Input />
@@ -63,7 +62,7 @@ function Login() {
         <div className="col-md-5">
           <div className="lottie">
             <lottie-player
-              src="https://assets4.lottiefiles.com/packages/lf20_06a6pf9i.json"
+              src="https://assets7.lottiefiles.com/packages/lf20_6uzjftg2.json"
               background="transparent"
               speed="1"
               loop

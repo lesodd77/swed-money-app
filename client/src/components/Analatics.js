@@ -1,5 +1,6 @@
 import { Progress } from "antd";
 import React from "react";
+import { numberWithCommas } from "../utils/format";
 import "../resources/analatics.css";
 function Analatics({ transactions }) {
   const totalTransactions = transactions.length;
@@ -7,7 +8,7 @@ function Analatics({ transactions }) {
     (transaction) => transaction.type === "income"
   );
   const totalExpenceTransactions = transactions.filter(
-    (transaction) => transaction.type === "expence"
+    (transaction) => transaction.type === "expense"
   );
   const totalIncomeTransactionsPercentage =
     (totalIncomeTransactions.length / totalTransactions) * 100;
@@ -22,7 +23,7 @@ function Analatics({ transactions }) {
     .filter((transaction) => transaction.type === "income")
     .reduce((acc, transaction) => acc + transaction.amount, 0);
   const totalExpenceTurnover = transactions
-    .filter((transaction) => transaction.type === "expence")
+    .filter((transaction) => transaction.type === "expense")
     .reduce((acc, transaction) => acc + transaction.amount, 0);
   console.log(totalExpenceTurnover);
   const totalIncomeTurnoverPercentage =
@@ -43,6 +44,7 @@ function Analatics({ transactions }) {
     "medical",
     "tax",
     "tithe",
+    "others",
   ];
 
   return (
@@ -50,10 +52,10 @@ function Analatics({ transactions }) {
       <div className="row">
         <div className="col-md-4 mt-3">
           <div className="transactions-count">
-            <h4>Total Transactions : {totalTransactions}</h4>
+            <h4>Total Transactions : {numberWithCommas(totalTransactions)}</h4>
             <hr />
-            <h5>Income : {totalIncomeTransactions.length}</h5>
-            <h5>Expence : {totalExpenceTransactions.length}</h5>
+            <h5>Income : {numberWithCommas(totalIncomeTransactions.length)}</h5>
+            <h5>Expense : {numberWithCommas(totalExpenceTransactions.length)}</h5>
 
             <div className="progress-bars">
               <Progress
@@ -73,10 +75,10 @@ function Analatics({ transactions }) {
 
         <div className="col-md-4 mt-3">
           <div className="transactions-count">
-            <h4>Total Turnover : {totalTurnover}</h4>
+            <h4>Total Turnover : {numberWithCommas(totalTurnover)}</h4>
             <hr />
-            <h5>Income : {totalIncomeTurnover}</h5>
-            <h5>Expence : {totalExpenceTurnover}</h5>
+            <h5>Income : {numberWithCommas(totalIncomeTurnover)}</h5>
+            <h5>Expense : {numberWithCommas(totalExpenceTurnover)}</h5>
 
             <div className="progress-bars">
               <Progress
@@ -94,20 +96,27 @@ function Analatics({ transactions }) {
           </div>
         </div>
       </div>
-       <hr />
+      <hr />
       <div className="row">
         <div className="col-md-6">
           <div className="category-analysis">
-            <h4>Income - Category Wise</h4>
+            <h4>Income - Category</h4>
             {categories.map((category) => {
               const amount = transactions
                 .filter((t) => t.type === "income" && t.category === category)
                 .reduce((acc, t) => acc + t.amount, 0);
               return (
-                amount > 0 && <div className="category-card">
-                  <h5>{category}</h5>
-                  <Progress strokeColor='#0B5AD9' percent={((amount / totalIncomeTurnover) * 100).toFixed(0)} />
-                </div>
+                amount > 0 && (
+                  <div className="category-card">
+                    <h5>{category}</h5>
+                    <Progress
+                      strokeColor="#0B5AD9"
+                      percent={((amount / totalIncomeTurnover) * 100).toFixed(
+                        0
+                      )}
+                    />
+                  </div>
+                )
               );
             })}
           </div>
@@ -115,16 +124,23 @@ function Analatics({ transactions }) {
 
         <div className="col-md-6">
           <div className="category-analysis">
-            <h4>Expence - Category Wise</h4>
+            <h4>Expense - Category</h4>
             {categories.map((category) => {
               const amount = transactions
-                .filter((t) => t.type === "expence" && t.category === category)
+                .filter((t) => t.type === "expense" && t.category === category)
                 .reduce((acc, t) => acc + t.amount, 0);
               return (
-               amount > 0 && <div className="category-card">
-                  <h5>{category}</h5>
-                  <Progress strokeColor='#0B5AD9' percent={((amount / totalExpenceTurnover) * 100).toFixed(0)} />
-                </div>
+                amount > 0 && (
+                  <div className="category-card">
+                    <h5>{category}</h5>
+                    <Progress
+                      strokeColor="#0B5AD9"
+                      percent={((amount / totalExpenceTurnover) * 100).toFixed(
+                        0
+                      )}
+                    />
+                  </div>
+                )
               );
             })}
           </div>

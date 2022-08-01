@@ -22,7 +22,7 @@ function Register() {
   };
 
   useEffect(() => {
-    if (localStorage.getItem("cedar-school")) {
+    if (localStorage.getItem("swed-money")) {
       navigate("/");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -35,7 +35,7 @@ function Register() {
         <div className="col-md-5">
           <div className="lottie">
             <lottie-player
-              src="https://assets4.lottiefiles.com/packages/lf20_06a6pf9i.json"
+              src="https://assets7.lottiefiles.com/packages/lf20_6uzjftg2.json"
               background="transparent"
               speed="1"
               loop
@@ -46,7 +46,7 @@ function Register() {
         <div className="col-md-4">
           <Form layout="vertical" onFinish={onFinish}>
             <h1>REGISTER</h1>
-           
+
             <Form.Item label="Name" name="name">
               <Input />
             </Form.Item>

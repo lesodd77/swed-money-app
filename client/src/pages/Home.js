@@ -15,7 +15,6 @@ import moment from "moment";
 import Analatics from "../components/Analatics";
 const { RangePicker } = DatePicker;
 
-
 function Home() {
   const [showAddEditTransactionModal, setShowAddEditTransactionModal] =
     useState(false);
@@ -28,7 +27,7 @@ function Home() {
   const [viewType, setViewType] = useState("table");
   const getTransactions = async () => {
     try {
-      const user = JSON.parse(localStorage.getItem("cedar-school"));
+      const user = JSON.parse(localStorage.getItem("swed-money"));
 
       setLoading(true);
       const response = await axios.post(
@@ -64,7 +63,7 @@ function Home() {
   };
   useEffect(() => {
     getTransactions();
-     // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [frequency, selectedRange, type]);
 
   const columns = [
@@ -90,6 +89,10 @@ function Home() {
       dataIndex: "reference",
     },
     {
+      title: "Description",
+      dataIndex: "description",
+    },
+    {
       title: "Actions",
       dataIndex: "actions",
       render: (text, record) => {
@@ -101,7 +104,10 @@ function Home() {
                 setShowAddEditTransactionModal(true);
               }}
             />
-            <DeleteOutlined className="mx-3" onClick={()=>deleteTransaction(record)}/>
+            <DeleteOutlined
+              className="mx-3"
+              onClick={() => deleteTransaction(record)}
+            />
           </div>
         );
       },
@@ -136,7 +142,7 @@ function Home() {
             <Select value={type} onChange={(value) => setType(value)}>
               <Select.Option value="all">All</Select.Option>
               <Select.Option value="income">Income</Select.Option>
-              <Select.Option value="expence">Expence</Select.Option>
+              <Select.Option value="expense">Expense</Select.Option>
             </Select>
           </div>
         </div>
@@ -164,7 +170,7 @@ function Home() {
             className="primary"
             onClick={() => setShowAddEditTransactionModal(true)}
           >
-            ADD NEW
+            ADD Money
           </button>
         </div>
       </div>

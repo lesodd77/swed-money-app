@@ -13,14 +13,14 @@ function AddEditTransaction({
   const [loading, setLoading] = useState(false);
   const onFinish = async (values) => {
     try {
-      const user = JSON.parse(localStorage.getItem("cedar-school"));
+      const user = JSON.parse(localStorage.getItem("swed-money"));
       setLoading(true);
       if (selectedItemForEdit) {
         await axios.post("/api/transactions/edit-transaction", {
-           payload : {
+          payload: {
             ...values,
             userid: user._id,
-           },
+          },
           transactionId: selectedItemForEdit._id,
         });
         getTransactions();
@@ -62,7 +62,7 @@ function AddEditTransaction({
         <Form.Item label="Type" name="type">
           <Select>
             <Select.Option value="income">Income</Select.Option>
-            <Select.Option value="expence">Expence</Select.Option>
+            <Select.Option value="expense">Expense</Select.Option>
           </Select>
         </Form.Item>
 
@@ -72,15 +72,16 @@ function AddEditTransaction({
             <Select.Option value="salary">Salary</Select.Option>
             <Select.Option value="donation">Donation</Select.Option>
             <Select.Option value="canteen">Canteen</Select.Option>
-            <Select.Option value="book">Books</Select.Option>
+            <Select.Option value="school-fees">School Fees</Select.Option>
+            <Select.Option value="books">Books</Select.Option>
             <Select.Option value="investment">Investment</Select.Option>
             <Select.Option value="transportation">Transportation</Select.Option>
             <Select.Option value="scolaship">Scolaship</Select.Option>
-            <Select.Option value="investment">Investment</Select.Option>
             <Select.Option value="uniform">Uniform</Select.Option>
             <Select.Option value="medical">Medical</Select.Option>
             <Select.Option value="tax">Tax</Select.Option>
             <Select.Option value="tithe">Tithe</Select.Option>
+            <Select.Option value="others">Others</Select.Option>
           </Select>
         </Form.Item>
 
