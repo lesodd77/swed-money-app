@@ -59,10 +59,10 @@ function Login() {
             </div>
           </Form>
         </div>
-        <div className="col-md-5">
+        <div className="col-md-4">
           <div className="lottie">
             <lottie-player
-              src="https://assets7.lottiefiles.com/packages/lf20_6uzjftg2.json"
+              src="https://assets5.lottiefiles.com/packages/lf20_06a6pf9i.json"
               background="transparent"
               speed="1"
               loop

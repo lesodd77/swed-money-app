@@ -1,23 +1,48 @@
-.transactions-count{
+.transactions-count {
+  box-shadow: 0 0 2px rgb(99, 98, 98);
+  padding: 15px;
+  border-radius: 10px;
+  color: rgb(56, 55, 55) !important;
+}
+
+.analytics h4 {
+  font-size: 20px;
+  color: gray !important;
+  font-weight: 600;
+}
+.analytics h5 {
+  font-size: 16px;
+  color: gray !important;
+}
+
+.category-card {
+  padding: 5px 20px;
+  box-shadow: 0 0 2px gray;
+  margin-top: 15px;
+  border-radius: 5px;
+}
+@media (max-width: 375px) {
+  .transactions-count {
     box-shadow: 0 0 2px rgb(132, 131, 131);
     padding: 15px;
     border-radius: 10px;
     color: rgb(56, 55, 55) !important;
-}
+  }
 
-.analytics h4{
+  .analytics h4 {
     font-size: 20px;
     color: gray !important;
     font-weight: 600;
-}
-.analytics h5{
+  }
+  .analytics h5 {
     font-size: 16px;
     color: gray !important;
-}
+  }
 
-.category-card{
+  .category-card {
     padding: 5px 20px;
     box-shadow: 0 0 2px gray;
     margin-top: 15px;
-    border-radius: 5px;
+    border-radius: 10px;
+  }
 }

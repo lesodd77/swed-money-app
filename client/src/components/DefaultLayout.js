@@ -1,8 +1,8 @@
 import React from "react";
 import { Menu, Dropdown } from "antd";
 import { useNavigate } from "react-router-dom";
-
 import "../resources/default-layout.css";
+
 function DefaultLayout(props) {
   const user = JSON.parse(localStorage.getItem("swed-money"));
   const navigate = useNavigate();

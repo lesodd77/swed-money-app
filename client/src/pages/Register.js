@@ -33,17 +33,6 @@ function Register() {
       {loading && <Spinner />}
       <div className="row justify-content-center align-items-center w-100 h-100">
         <div className="col-md-5">
-          <div className="lottie">
-            <lottie-player
-              src="https://assets7.lottiefiles.com/packages/lf20_6uzjftg2.json"
-              background="transparent"
-              speed="1"
-              loop
-              autoplay
-            ></lottie-player>
-          </div>
-        </div>
-        <div className="col-md-4">
           <Form layout="vertical" onFinish={onFinish}>
             <h1>REGISTER</h1>
 
@@ -64,6 +53,17 @@ function Register() {
               </button>
             </div>
           </Form>
+        </div>
+        <div className="col-md-5">
+          <div className="lottie">
+            <lottie-player
+              src="https://assets5.lottiefiles.com/packages/lf20_06a6pf9i.json"
+              background="transparent"
+              speed="1"
+              loop
+              autoplay
+            ></lottie-player>
+          </div>
         </div>
       </div>
     </div>

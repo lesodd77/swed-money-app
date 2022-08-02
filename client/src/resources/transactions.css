@@ -1,57 +1,68 @@
-.filter{
-    box-shadow: 0 0 2px gray;
-    padding: 15px 20px;
-    border-radius: 5px;
+.filter {
+  box-shadow: 0 0 2px gray;
+  padding: 15px 20px;
+  border-radius: 10px;
+  background-color: rgb(227, 236, 245);
 }
 
-.transaction-form label{
-    color: rgba(0, 0, 0, 0.77) !important;
+.transaction-form label {
+  color: rgba(0, 0, 0, 0.77) !important;
+  border-radius: 10px;
 }
-.transaction-form input{
-    border: 1px solid gray;
-    border-bottom: 1px solid gray;
-    box-shadow: none !important;
+.transaction-form input {
+  border: 1px solid gray;
+  border-bottom: 1px solid gray;
+  box-shadow: none !important;
 }
-.transaction-form input:focus{
-    border: 1px solid gray;
-    border-bottom: 1px solid gray !important;
-    box-shadow: none !important;
-}
-
-.ant-select-selector{
-    border: 1px solid gray !important;
-}
-.ant-select-selector:focus{
-    box-shadow:none !important;
-    outline: none !important;
+.transaction-form input:focus {
+  border: 1px solid gray;
+  border-bottom: 1px solid gray !important;
+  box-shadow: none !important;
 }
 
-.view-switch{
-    border: 1px solid rgba(0, 0, 0, 0.71);
-    border-radius: 3px;
-    padding: 5px 10px;
+.ant-select-selector {
+  border: 1px solid gray !important;
+}
+.ant-select-selector:focus {
+  box-shadow: none !important;
+  outline: none !important;
 }
 
+.view-switch {
+  border: 1px solid rgba(0, 0, 0, 0.71);
+  border-radius: 3px;
+  padding: 5px 10px;
+}
 
-.anticon svg{
+.anticon svg {
+  font-size: 20px;
+  color: rgb(3, 68, 3);
+  cursor: pointer;
+}
+
+.delete svg {
     font-size: 20px;
+    color: rgb(212, 9, 9);
     cursor: pointer;
+  }
+  .edit svg {
+    font-size: 20px;
+    color: rgb(10, 120, 124);
+    cursor: pointer;
+  }
+
+.active-icon {
+  color: rgb(12, 214, 147);
+}
+.inactive-icon {
+  color: gray;
+}
+.ant-picker-range {
+  border: 1px solid black !important;
 }
 
-.active-icon{
-    color: black;
-    
-}
-.inactive-icon{
-    color: gray;
-
-}
-.ant-picker-range{
-    border: 1px solid black !important;
-}
-
-@media screen and (max-width:600px){
-    .filter{
-        overflow-x: scroll;
-    }
+@media screen and (max-width: 600px) {
+  .filter {
+    overflow-x: scroll;
+  }
 }

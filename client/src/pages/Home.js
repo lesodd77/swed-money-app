@@ -97,18 +97,23 @@ function Home() {
       dataIndex: "actions",
       render: (text, record) => {
         return (
+      
           <div>
             <EditOutlined
+            className="edit"
               onClick={() => {
                 setSelectedItemForEdit(record);
                 setShowAddEditTransactionModal(true);
-              }}
-            />
-            <DeleteOutlined
-              className="mx-3"
-              onClick={() => deleteTransaction(record)}
-            />
-          </div>
+              } } 
+              />
+         
+        
+          <DeleteOutlined
+              className="mx-3 delete"
+              onClick={() => deleteTransaction(record)} />
+               </div>
+            
+         
         );
       },
     },

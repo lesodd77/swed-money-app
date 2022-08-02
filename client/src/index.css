@@ -1,13 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
 body {
   margin: 0;
-  background-color: antiquewhite;
-
+  font-family: sans-serif;
+  background-color: rgb(65, 53, 64);
   font-family: "Montserrat", sans-serif !important;
 }
-body,
+
 html {
-  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 .primary {
@@ -20,9 +20,10 @@ html {
 }
 
 .secondary {
-  background-color: #ffffff;
+  background-color: #4834d4;
+  background-image: linear-gradient(315deg, #4834d4 0%, #0c0c0c1a 74%);
   padding: 5px 20px;
-  color: black !important;
+  color: rgb(255, 255, 255) !important;
   border-radius: 50px;
   border: none;
 }
