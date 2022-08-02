@@ -4,10 +4,11 @@ body {
   font-family: sans-serif;
   background-color: rgb(65, 53, 64);
   font-family: "Montserrat", sans-serif !important;
+  overflow-x: hidden;
 }
 
 html {
-  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 .primary {
