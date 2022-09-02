@@ -98,7 +98,7 @@ function AddEditTransaction({
         </Form.Item>
 
         <div className="d-flex justify-content-end">
-          <button className="primary" type="submit">
+          <button className="inline-flex items-center px-3 py-2 border border-transparent text-md font-medium rounded-lg shadow-lg shadow-cyan-900/50 text-white bg-cyan-600 hover:bg-cyan-700" type="submit">
             SAVE
           </button>
         </div>

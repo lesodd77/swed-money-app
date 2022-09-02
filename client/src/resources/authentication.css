@@ -3,6 +3,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: aliceblue;
+  color: rgb(29, 28, 28);
+}
+.select{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #4834d4;
   background-image: linear-gradient(315deg, #4834d4 0%, #0c0c0c 74%);
 }
@@ -13,36 +21,44 @@
 .register input {
   background-color: transparent;
   border: none;
+  border-radius: 10px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.784);
   color: rgba(255, 255, 255, 0.568);
 }
 
 input:focus {
-  outline: none !important;
+  outline: none;
   box-shadow: #4834d4;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.784) !important;
+  border-radius: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.784);
 }
 
-label,
-a {
-  color: rgba(255, 255, 255, 0.536) !important;
+h2{
+ color: aliceblue;
+ 
 }
-
 .register h1 {
   font-size: 35px;
   color: white;
-  font-weight: 600;
+  
+}
+.create_student h1 {
+  font-size: 35px;
+  color: white;
+
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 320px) {
   .register {
-    height: 60vh;
+   margin-top: 0 auto;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #4834d4;
     background-image: linear-gradient(315deg, #4834d4 0%, #0c0c0c 74%);
   }
+
+
   .lottie {
     height: 200px;
   }
@@ -50,20 +66,34 @@ a {
   .register input {
     background-color: transparent;
     border: none;
+    border-radius: 10px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.784);
     color: rgba(255, 255, 255, 0.568);
   }
+
+ 
   
   input:focus {
-    outline: none !important;
-    box-shadow: none !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.784) !important;
+    outline: none;
+    border-radius: 10px;
+    box-shadow: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.784);
+  }
+  DatePicker {
+    outline: none;
+    border-radius: 10px;
+    box-shadow: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.784);
   }
   
   label,
   a {
-    color: rgba(255, 255, 255, 0.536) !important;
+    color: rgba(255, 255, 255, 0.536);
   }
+  label {
+    color: rgba(255, 255, 255, 0.536);
+  }
+  
   
   .register h1 {
     font-size: 35px;

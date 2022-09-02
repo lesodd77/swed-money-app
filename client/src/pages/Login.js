@@ -20,7 +20,7 @@ function Login() {
       );
       setLoading(false);
       message.success("Login successful");
-      navigate("/");
+      navigate("/wallet");
     } catch (error) {
       setLoading(false);
       message.error("Login failed");
@@ -29,7 +29,7 @@ function Login() {
 
   useEffect(() => {
     if (localStorage.getItem("swed-money")) {
-      navigate("/");
+      navigate("/wallet");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -41,28 +41,35 @@ function Login() {
         <div className="col-md-4">
           <Form layout="vertical" onFinish={onFinish}>
             <h1>Login</h1>
-
-            <Form.Item label="Email" name="email">
+            <h2>Email</h2>
+            <Form.Item 
+            name="email"
+            className="text-white"
+            >
               <Input />
             </Form.Item>
-            <Form.Item label="Password" name="password">
+            <h2>Password</h2>
+            <Form.Item 
+            name="password"
+            >
               <Input type="password" />
             </Form.Item>
 
             <div className="d-flex justify-content-between align-items-center">
-              <Link to="/register">
-                Not Registered Yet , Click Here To Register
-              </Link>
-              <button className="secondary" type="submit">
+             
+              <button className="mt-3 px-4 py-2 rounded-md bg-sky-500 hover:bg-sky-400 text-white font-semibold text-center block w-full cursor-pointer" type="submit">
                 LOGIN
               </button>
             </div>
+            <Link to="/register" className=" mt-5 text-slate-600 hover:border-rose-600">
+                Not Registered Yet , Click Here To Register
+              </Link>
           </Form>
         </div>
         <div className="col-md-4">
           <div className="lottie">
             <lottie-player
-              src="https://assets5.lottiefiles.com/packages/lf20_06a6pf9i.json"
+              src="https://assets8.lottiefiles.com/private_files/lf30_zh2jz2uz.json"
               background="transparent"
               speed="1"
               loop

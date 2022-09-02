@@ -1,0 +1,12 @@
+body {
+background-color: dimgrey;
+color: cyan;
+box-sizing: border-box;
+}
+*html{
+    height: 100%;
+}
+.h1{
+    flex-direction: column-reverse;
+    color: aqua;
+}

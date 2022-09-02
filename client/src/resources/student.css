@@ -1,0 +1,54 @@
+
+.student_form {
+  height: 100vh;
+  margin: 0;
+  font-family: sans-serif;
+  background-color: aliceblue;
+  font-family: "Montserrat", sans-serif !important;
+  overflow-x: hidden;
+  -ms-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  color: rgb(22, 21, 21);
+}
+
+
+.select{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color:  rgb(2, 49, 49);
+  
+}
+
+.student_form  input {
+  background-color: transparent;
+  border: none;
+  border-radius: 10px;
+  border-bottom: 1px solid rgb(2, 49, 49);
+  color: rgb(32, 32, 32);
+}
+
+input:focus {
+  outline: none;
+  box-shadow:  rgb(2, 49, 49);
+  border-radius: 10px;
+  border-bottom: 1px solid  rgb(2, 49, 49);
+}
+
+h2{
+ color: rgb(29, 28, 28);
+ 
+}
+.student_form  h1 {
+  font-size: 35px;
+  color: rgb(184, 181, 181);
+  
+}
+.lottie {
+  height: 300px;
+}
+
+ 

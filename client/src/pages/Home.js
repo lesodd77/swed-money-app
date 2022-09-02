@@ -1,205 +1,57 @@
-import { DatePicker, message, Select, Table } from "antd";
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import AddEditTransaction from "../components/AddEditTransaction";
-import DefaultLayout from "../components/DefaultLayout";
-import Spinner from "../components/Spinner";
-import "../resources/transactions.css";
-import {
-  UnorderedListOutlined,
-  AreaChartOutlined,
-  EditOutlined,
-  DeleteOutlined,
-} from "@ant-design/icons";
-import moment from "moment";
-import Analatics from "../components/Analatics";
-const { RangePicker } = DatePicker;
+import React from "react";
 
 function Home() {
-  const [showAddEditTransactionModal, setShowAddEditTransactionModal] =
-    useState(false);
-  const [selectedItemForEdit, setSelectedItemForEdit] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [transactionsData, setTransactionsData] = useState([]);
-  const [frequency, setFrequency] = useState("7");
-  const [type, setType] = useState("all");
-  const [selectedRange, setSelectedRange] = useState([]);
-  const [viewType, setViewType] = useState("table");
-  const getTransactions = async () => {
-    try {
-      const user = JSON.parse(localStorage.getItem("swed-money"));
-
-      setLoading(true);
-      const response = await axios.post(
-        "/api/transactions/get-all-transactions",
-        {
-          userid: user._id,
-          frequency,
-          ...(frequency === "custom" && { selectedRange }),
-          type,
-        }
-      );
-      setTransactionsData(response.data);
-      setLoading(false);
-    } catch (error) {
-      setLoading(false);
-      message.error("Something went wrong");
-    }
-  };
-
-  const deleteTransaction = async (record) => {
-    try {
-      setLoading(true);
-      await axios.post("/api/transactions/delete-transaction", {
-        transactionId: record._id,
-      });
-      message.success("Transaction Deleted successfully");
-      getTransactions();
-      setLoading(false);
-    } catch (error) {
-      setLoading(false);
-      message.error("Something went wrong");
-    }
-  };
-  useEffect(() => {
-    getTransactions();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [frequency, selectedRange, type]);
-
-  const columns = [
-    {
-      title: "Date",
-      dataIndex: "date",
-      render: (text) => <span>{moment(text).format("YYYY-MM-DD")}</span>,
-    },
-    {
-      title: "Amount",
-      dataIndex: "amount",
-    },
-    {
-      title: "Category",
-      dataIndex: "category",
-    },
-    {
-      title: "Type",
-      dataIndex: "type",
-    },
-    {
-      title: "Reference",
-      dataIndex: "reference",
-    },
-    {
-      title: "Description",
-      dataIndex: "description",
-    },
-    {
-      title: "Actions",
-      dataIndex: "actions",
-      render: (text, record) => {
-        return (
-      
-          <div>
-            <EditOutlined
-            className="edit"
-              onClick={() => {
-                setSelectedItemForEdit(record);
-                setShowAddEditTransactionModal(true);
-              } } 
-              />
-         
-        
-          <DeleteOutlined
-              className="mx-3 delete"
-              onClick={() => deleteTransaction(record)} />
-               </div>
-            
-         
-        );
-      },
-    },
-  ];
-
   return (
-    <DefaultLayout>
-      {loading && <Spinner />}
-      <div className="filter d-flex justify-content-between align-items-center">
-        <div className="d-flex">
-          <div className="d-flex flex-column">
-            <h6>Select Frequency</h6>
-            <Select value={frequency} onChange={(value) => setFrequency(value)}>
-              <Select.Option value="7">Last 1 Week</Select.Option>
-              <Select.Option value="30">Last 1 Month</Select.Option>
-              <Select.Option value="365">Last 1 Year</Select.Option>
-              <Select.Option value="custom">Custom</Select.Option>
-            </Select>
-
-            {frequency === "custom" && (
-              <div className="mt-2">
-                <RangePicker
-                  value={selectedRange}
-                  onChange={(values) => setSelectedRange(values)}
-                />
-              </div>
-            )}
-          </div>
-          <div className="d-flex flex-column mx-5">
-            <h6>Select Type</h6>
-            <Select value={type} onChange={(value) => setType(value)}>
-              <Select.Option value="all">All</Select.Option>
-              <Select.Option value="income">Income</Select.Option>
-              <Select.Option value="expense">Expense</Select.Option>
-            </Select>
+    <main>
+      <div className="relative bg-slate-900 rounded-b-3xl shadow-4xl flex items-center justify-center  mb-12 overflow-hidden">
+        <div className="relative z-30 p-5 text-2xl text-white bg-opacity-50 rounded-xl">
+          <div className="relative mt-4 px-4 py-16 sm:px-6 sm:py-24 lg:py-32 lg:px-8">
+            <h1 className="text-center text-4xl font-bold tracking-tight sm:text-5xl sm:tracking-tight lg:text-6xl lg:tracking-tight">
+              <span className="block font-italic text-white">Welcome to</span>
+              <span className="block text-indigo-200">CCBS</span>
+            </h1>
+            <p className="mt-10 max-w-lg mx-auto text-center text-xl text-indigo-200 sm:max-w-2xl">
+              Every step of transaction matters.
+            </p>
           </div>
         </div>
 
-        <div className="d-flex">
-          <div>
-            <div className="view-switch mx-5">
-              <UnorderedListOutlined
-                className={`mx-3 ${
-                  viewType === "table" ? "active-icon" : "inactive-icon"
-                } `}
-                onClick={() => setViewType("table")}
-                size={30}
-              />
-              <AreaChartOutlined
-                className={`${
-                  viewType === "analytics" ? "active-icon" : "inactive-icon"
-                } `}
-                onClick={() => setViewType("analytics")}
-                size={30}
-              />
-            </div>
+        <div className="absolute z-10 w-auto min-w-ful min-h-full max-w-none">
+          <div className="lottie">
+            <lottie-player
+              src="https://assets4.lottiefiles.com/packages/lf20_i32gj28t.json"
+              background="transparent"
+              speed=".4"
+              loop
+              autoplay
+            ></lottie-player>
           </div>
-          <button
-            className="primary"
-            onClick={() => setShowAddEditTransactionModal(true)}
+        </div>
+      </div>
+      <div className="mt-10 py-12 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center items-center">
+              
+        <div className="flex justify-center items-center">
+          
+          <a
+            href="/register"
+            className="justify-center inline-flex items-center px-3 py-2 border border-transparent text-md font-medium rounded-l-full shadow-lg shadow-cyan-900/50 text-white bg-cyan-600 hover:bg-cyan-700"
           >
-            ADD Money
-          </button>
+            <span className="text-center text-lg">Sign Up</span>
+          </a>
+          <a
+            href="/login"
+            className="justify-center inline-flex items-center px-3 py-2 border border-transparent text-md font-medium rounded-r-full shadow-lg shadow-cyan-900/50 text-white bg-cyan-600 hover:bg-cyan-700"
+          >
+            <span className="text-center text-lg">Login</span>
+          </a>
+          
         </div>
+        
       </div>
-
-      <div className="table-analtics">
-        {viewType === "table" ? (
-          <div className="table">
-            <Table columns={columns} dataSource={transactionsData} />
-          </div>
-        ) : (
-          <Analatics transactions={transactionsData} />
-        )}
-      </div>
-
-      {showAddEditTransactionModal && (
-        <AddEditTransaction
-          showAddEditTransactionModal={showAddEditTransactionModal}
-          setShowAddEditTransactionModal={setShowAddEditTransactionModal}
-          selectedItemForEdit={selectedItemForEdit}
-          getTransactions={getTransactions}
-          setSelectedItemForEdit={setSelectedItemForEdit}
-        />
-      )}
-    </DefaultLayout>
+      <p className="mt-40 py-12 max-w-lg mx-auto text-center text-md text-slate-400 sm:max-w-1xl">
+        Alright reserved 2022 by SWED INC.
+      </p>
+    </main>
   );
 }
 

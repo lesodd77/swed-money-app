@@ -13,6 +13,8 @@ connectDB();
 
 const transactionsRoute = require('./routes/transactionsRoute');
 const userRoute = require('./routes/usersRoute');
+const studentsRoute = require('./routes/studentsRoute');
+
 
 const app = express();
 
@@ -25,6 +27,8 @@ if(process.env.NODE_ENV === 'development') {
 
 app.use('/api/users/' , userRoute)
 app.use('/api/transactions/' , transactionsRoute)
+app.use('/api/students/' , studentsRoute)
+
 
 if(process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
