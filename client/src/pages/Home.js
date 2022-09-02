@@ -3,15 +3,15 @@ import React from "react";
 function Home() {
   return (
     <main>
-      <div className="relative bg-slate-900 rounded-b-3xl shadow-4xl flex items-center justify-center  mb-12 overflow-hidden">
-        <div className="relative z-30 p-5 text-2xl text-white bg-opacity-50 rounded-xl">
-          <div className="relative mt-4 px-4 py-16 sm:px-6 sm:py-24 lg:py-32 lg:px-8">
-            <h1 className="text-center text-4xl font-bold tracking-tight sm:text-5xl sm:tracking-tight lg:text-6xl lg:tracking-tight">
+      <div className="relative h-70 w-full bg-slate-900 rounded-b-3xl shadow-4xl flex items-center justify-center  mb-12 overflow-hidden">
+        <div className="relative z-30 p-16 text-2xl text-white bg-opacity-50 rounded-xl">
+          <div className="relative mt-10 px-4 py-12 sm:px-6 sm:py-24 lg:py-25 lg:px-8">
+            <h1 className="text-center text-4xl font-semibold tracking-tight sm:text-4xl sm:tracking-tight lg:text-5xl lg:tracking-tight">
               <span className="block font-italic text-white">Welcome to</span>
               <span className="block text-indigo-200">CCBS</span>
             </h1>
-            <p className="mt-10 max-w-lg mx-auto text-center text-xl text-indigo-200 sm:max-w-2xl">
-              Every step of transaction matters.
+            <p className="mt-6 max-w-lg mx-auto text-center text-xl text-indigo-200 sm:max-w-2xl">
+              Where Education is approached differently.
             </p>
           </div>
         </div>
@@ -28,7 +28,7 @@ function Home() {
           </div>
         </div>
       </div>
-      <div className="mt-10 py-12 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center items-center">
+      <div className="mt-7 py-12 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center items-center sm:mt-4">
               
         <div className="flex justify-center items-center">
           

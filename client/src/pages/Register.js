@@ -43,7 +43,7 @@ function Register() {
             ></lottie-player>
           </div>
         </div>
-        <div className="col-md-4">z
+        <div className="col-md-4">
           <Form layout="vertical" onFinish={onFinish}>
             <h1>REGISTER</h1>
             <h2>Name</h2>
