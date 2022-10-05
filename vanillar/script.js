@@ -79,7 +79,7 @@
 //  } else if (scoreDolphines === scoreKoalas){
 //     console.log('both team has draw');
 //  }
- 
+
  ///////challenge 1 calculation
 //  const scoreDolphines = (97 + 112 + 101) / 2;
 
@@ -97,7 +97,7 @@
 //  } else {
 //     console.log('No one won')
 //  }
- 
+
 
 //////////switch or equality
 // const day = 'saturday';
@@ -161,7 +161,7 @@
 
 //////
 
-// 3 + 4 
+// 3 + 4
 // 1991
 // true && false && !false
 
@@ -246,7 +246,7 @@
 
 
 // function per(number, per){
-   
+
 //     return (number/100 ) * per;
 // }
 // console.log(per(300 , 10))
@@ -294,30 +294,51 @@
 // }
 // console.log(fes(2000, 10))
 
-// 
+//
+//
+// const day = 'default';
+//
+// switch (day) {
+//       case 'moday': // day === 'monday'
+//       console.log('Plan course structure');
+//       console.log('Go to coding meetup');
+//      // break;
+// case 'tuesday':
+//       console.log('Prepare powerpoint');
+//       break;
+//       case 'wednesday':
+//       console.log('Prepare powerpoint');
+//       break;
+// case 'thursday':
+// case 'friday':
+//       console.log('Learn coding')
+//       break;
+// case 'saturday':
+//
+// case 'sunday':
+//       console.log('Sabbath and rest')
+//       break;
+//       default:
+//       console.log('Not valid')
+// }
 
-const day = 'default';
-
-switch (day) {
-      case 'moday': // day === 'monday'
-      console.log('Plan course structure');
-      console.log('Go to coding meetup');
-     // break;
-case 'tuesday':
-      console.log('Prepare powerpoint');
-      break;
-      case 'wednesday':
-      console.log('Prepare powerpoint');
-      break;
-case 'thursday':
-case 'friday':
-      console.log('Learn coding')
-      break;
-case 'saturday':
-
-case 'sunday':
-      console.log('Sabbath and rest')
-      break;
-      default:
-      console.log('Not valid')
-}
+//call one function in another
+// const calcAge = function(year){
+//   return 2022 - year;
+// }
+// const yearsUntilRetirement = function(year, firstName) {
+//  const age = calcAge(year);
+//  const retirement = 60 - age;
+//  console.log(`${firstName} retires in  ${retirement} years`)
+//  if(retirement > 0) {
+//      return retirement;
+//  } else {
+//     console.log(`${firstName} has already retired`)
+//    return -1;
+//
+//  }
+//
+//   // return `${firstName} retires in  ${retirement} years`
+// }
+// console.log(yearsUntilRetirement(1977, 'simon'))
+// console.log(yearsUntilRetirement(1940, 'mike'))

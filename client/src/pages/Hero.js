@@ -1,62 +1,100 @@
-import React from 'react'
-import DefaultLayout from '../components/DefaultLayout'
+import React, { useEffect } from "react";
 
+import { useNavigate } from "react-router-dom";
+import { Col, Row, Table } from "antd";
+import axios from "axios";
+import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
+import { ShowLoading, HideLoading } from "../redux/alerts";
 
-function Hero (){
+function Hero() {
+  const dispatch = useDispatch();
+  const [results, setResults] = React.useState([]);
+  const navigate = useNavigate();
+  const getResults = async (values) => {
+    try {
+      dispatch(ShowLoading());
+      const response = await axios.post(
+        "/api/results/get-all-results",
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      dispatch(HideLoading());
+      if (response.data.success) {
+        setResults(response.data.data);
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error) {
+      dispatch(HideLoading());
+      toast.error(error.message);
+    }
+  };
+
+  useEffect(() => {
+    if (results.length === 0) {
+      getResults();
+    }
+     // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
-    <DefaultLayout>
-  <div className="max-w-2xl mx-auto p-8">
-    <h2 className="sm:tex-lg sm:leading-snug font-semibold tracking-wide uppercase">Muffin cake</h2>
-   <p className='text-5xl lg:text-6xl leading-none font-extrabold text-gray-900'></p>
-  
-  <ul className='flex space-x-6'>
-    
-  <li className='flex flex-col items-center space-y-1 rounded-full'>
-    <div className='relative bg-gradient-to-tr from-yellow-500 to-fuchsia-600  p-1 rounded-full'>
-        <a className='block bg-white p-1 rounded-full transform transition hover:-rotate-6' href='#'>
-            <img className='h-20 w-20 rounded-full 'src='https://placekitten.com/200/205' alt='cute kitting'/>
-        </a>
-        <button className='create-story'>+</button>
+    <div className="p-5">
+      <div className="header d-flex justify-content-between align-items-center py-3">
+        <h1 className="text-white">
+          {" "}
+          <b className="secondary-text">SHEY</b> RESULTS{" "}
+        </h1>
+        <div>
+          <h1
+            className="text-white text-small cursor-pointer underline"
+            onClick={() => {
+              navigate("/login");
+            }}
+          >
+            Login
+          </h1>
         </div>
-        <a className='block bg-white p-1 rounded-full' href='#'>you</a>
-    </li>
-    <li className='flex flex-col items-center space-y-1 rounded-full'>
-    <div className='bg-gradient-to-tr from-yellow-500 to-fuchsia-600  p-1 rounded-full'>
-        <a className='block bg-white p-1 rounded-full transform transition hover:-rotate-6' href='#'>
-            <img className='h-20 w-20 rounded-full 'src='https://placekitten.com/200/204' alt='cute kitting'/>
-        </a>
-        </div>
-        <a className='block bg-white p-1 rounded-full' href='#'>kitty_three</a>
-    </li>
-    <li className='flex flex-col items-center space-y-1 rounded-full'>
-    <div className='bg-gradient-to-tr from-yellow-500 to-fuchsia-600  p-1 rounded-full '>
-        <a className='block bg-white p-1 rounded-full transform transition hover:-rotate-6' href='#'>
-            <img className='h-20 w-20 rounded-full 'src='https://placekitten.com/200/201' alt='cute kitting'/>
-        </a>
-        </div>
-        <a className='block bg-white p-1 rounded-full' href='#'>kitty_two</a>
-    </li>
+      </div>
 
-    <li className='flex flex-col items-center space-y-1 rounded-full'>
-    <div className='bg-gradient-to-tr from-yellow-500 to-fuchsia-600  p-1 rounded-full'>
-        <a className='block bg-white p-1 rounded-full transform transition hover:-rotate-6' href='#'>
-            <img className='h-20 w-20 rounded-full 'src='https://placekitten.com/200/202' alt='cute kitting'/>
-        </a>
+      {results.length > 0 ? (
+        <Row gutter={[20, 20]}>
+          <Col span={24}>
+            <h1 className="text-large my-3">Welcome to SHEY RESULTS </h1>
+            <h1 className="text-medium my-3">
+              Select Your Examination From Below..{" "}
+            </h1>
+            <hr />
+          </Col>
+
+          {results.map((result) => {
+            return (
+              <Col span={8}>
+                <div
+                  className="card p-2 cursor-pointer primary-border"
+                  onClick={() => {
+                    navigate(`/result/${result._id}`);
+                  }}
+                >
+                  <h1 className="text-medium">{result.examination}</h1>
+                  <hr />
+                  <h1 className="text-small">Class : {result.class}</h1>
+                </div>
+              </Col>
+            );
+          })}
+        </Row>
+      ) : (
+        <div className="d-flex align-items-center justify-content-center mt-5 pt-5">
+          <h1 className="text-medium">No Results Found</h1>
         </div>
-        <a className='block bg-white p-1 rounded-full' href='#'>kitty_three</a>
-    </li>
-    <li className='flex flex-col items-center space-y-1 rounded-full'>
-    <div className='bg-gradient-to-tr from-yellow-500 to-fuchsia-600  p-1 rounded-full'>
-        <a className='block bg-white p-1 rounded-full transform transition hover:-rotate-6' href='#'>
-            <img className='h-20 w-20 rounded-full 'src='https://placekitten.com/200/206' alt='cute kitting'/>
-        </a>
-        </div>
-        <a className='block bg-white p-1 rounded-full' href='#'>kitty_three</a>
-    </li>
-  </ul>
-  
-  </div>
-  </DefaultLayout>
-  )
+      )}
+    </div>
+  );
 }
+
 export default Hero;

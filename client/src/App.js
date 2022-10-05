@@ -8,9 +8,6 @@ import Home from "./pages/Home";
 import Wallet from "./pages/Wallet";
 import Hero from "./pages/Hero";
 import Analyse from "./pages/Analyse";
-import Student from "./pages/student/Student";
-import ReEnroll from "./pages/student/ReEnroll";
-
 
 
 
@@ -25,17 +22,6 @@ function App() {
               element={<Home />} 
               />
              
-        
-            <Route
-              path="/student"
-              element={<ProtectedRoute>
-                <Student/>
-              </ProtectedRoute>} />
-              <Route
-              path="/reEnroll"
-              element={<ProtectedRoute>
-                <ReEnroll />
-              </ProtectedRoute>} />
               <Route
               path="/hero"
               element={<ProtectedRoute>
